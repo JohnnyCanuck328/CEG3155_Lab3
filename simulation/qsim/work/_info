@@ -1,0 +1,81 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\grobb\Documents\.University\Digital_Systems\Labs\Lab_3\simulation\qsim
+vlab3
+Z1 !s100 JKVBVmQ@14lT_EPg`[2aZ0
+Z2 ITjh@QdX[hba:z59[jZk4N1
+Z3 VJ^J26:]Oe1B;L__XCCka13
+Z4 dC:\Users\grobb\Documents\.University\Digital_Systems\Labs\Lab_3\simulation\qsim
+Z5 w1667683707
+Z6 8lab3.vo
+Z7 Flab3.vo
+L0 31
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -work|work|lab3.vo|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1667683708.299000
+Z12 !s107 lab3.vo|
+!s101 -O0
+vlab3_vlg_check_tst
+!i10b 1
+Z13 !s100 6z0YF0A^9I91cNnS8WNGn2
+Z14 Ije2J`Z2N5jQPfc8O63<]^0
+Z15 VH4QbCfNcjE5eA0cOgA@0A0
+R4
+Z16 w1667683706
+Z17 8testingState.vwf.vt
+Z18 FtestingState.vwf.vt
+L0 65
+R8
+r1
+!s85 0
+31
+Z19 !s108 1667683708.386000
+Z20 !s107 testingState.vwf.vt|
+Z21 !s90 -work|work|testingState.vwf.vt|
+!s101 -O0
+R10
+vlab3_vlg_sample_tst
+!i10b 1
+Z22 !s100 TKQ2FD^RbOh0EaX2J0zAo0
+Z23 I:FeInVGB6ROZDimHa<TlF2
+Z24 V<`R:aI_U9ofd1QlhRm^^V1
+R4
+R16
+R17
+R18
+L0 29
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10
+vlab3_vlg_vec_tst
+!i10b 1
+!s100 n1zUal;M9MTEWF7JTGEd_3
+I;5C4C]KcAV=H9:^d6UMbf0
+Z25 Vm>TFY<<QB3WBRa>cCKI@j1
+R4
+R16
+R17
+R18
+Z26 L0 328
+R8
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R10

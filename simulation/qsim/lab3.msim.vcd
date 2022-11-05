@@ -1,0 +1,410 @@
+$comment
+	File created using the following command:
+		vcd file lab3.msim.vcd -direction
+$end
+$date
+	Sat Nov 05 17:28:28 2022
+$end
+$version
+	ModelSim Version 10.1d
+$end
+$timescale
+	1ps
+$end
+$scope module lab3_vlg_vec_tst $end
+$var reg 1 ! clk $end
+$var reg 1 " counterExpired $end
+$var reg 1 # enable $end
+$var reg 1 $ reset $end
+$var reg 1 % sensor $end
+$var wire 1 & debug [2] $end
+$var wire 1 ' debug [1] $end
+$var wire 1 ( debug [0] $end
+$var wire 1 ) mstl [2] $end
+$var wire 1 * mstl [1] $end
+$var wire 1 + mstl [0] $end
+$var wire 1 , sstl [2] $end
+$var wire 1 - sstl [1] $end
+$var wire 1 . sstl [0] $end
+$var wire 1 / sampler $end
+$scope module i1 $end
+$var wire 1 0 gnd $end
+$var wire 1 1 vcc $end
+$var wire 1 2 unknown $end
+$var tri1 1 3 devclrn $end
+$var tri1 1 4 devpor $end
+$var tri1 1 5 devoe $end
+$var wire 1 6 mstl[0]~output_o $end
+$var wire 1 7 mstl[1]~output_o $end
+$var wire 1 8 mstl[2]~output_o $end
+$var wire 1 9 sstl[0]~output_o $end
+$var wire 1 : sstl[1]~output_o $end
+$var wire 1 ; sstl[2]~output_o $end
+$var wire 1 < debug[0]~output_o $end
+$var wire 1 = debug[1]~output_o $end
+$var wire 1 > debug[2]~output_o $end
+$var wire 1 ? clk~input_o $end
+$var wire 1 @ clk~inputclkctrl_outclk $end
+$var wire 1 A sensor~input_o $end
+$var wire 1 B counterExpired~input_o $end
+$var wire 1 C ffIn[1]~0_combout $end
+$var wire 1 D ffIn[1]~1_combout $end
+$var wire 1 E reset~input_o $end
+$var wire 1 F reset~inputclkctrl_outclk $end
+$var wire 1 G enable~input_o $end
+$var wire 1 H Y1|int_q~q $end
+$var wire 1 I ffIn[0]~2_combout $end
+$var wire 1 J ffIn[0]~3_combout $end
+$var wire 1 K Y0|int_q~q $end
+$var wire 1 L Y2|int_q~0_combout $end
+$var wire 1 M Y2|int_q~1_combout $end
+$var wire 1 N Y2|int_q~q $end
+$var wire 1 O mstl~0_combout $end
+$var wire 1 P mstl~1_combout $end
+$var wire 1 Q rtl~0_combout $end
+$var wire 1 R sstl~0_combout $end
+$var wire 1 S sstl~1_combout $end
+$var wire 1 T sstl~2_combout $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+1"
+1#
+0$
+0%
+0(
+0'
+0&
+1+
+0*
+0)
+0.
+0-
+1,
+x/
+00
+11
+x2
+13
+14
+15
+16
+07
+08
+09
+0:
+1;
+0<
+0=
+0>
+0?
+0@
+0A
+1B
+0C
+0D
+0E
+0F
+1G
+0H
+0I
+1J
+0K
+0L
+0M
+0N
+1O
+0P
+0Q
+0R
+0S
+0T
+$end
+#1000
+1!
+1?
+1@
+0/
+#2000
+1$
+0!
+1E
+0?
+1F
+0@
+1/
+#3000
+1!
+1?
+1@
+0/
+1K
+0J
+1I
+1<
+1(
+1J
+#4000
+0"
+0!
+0B
+0?
+0@
+1/
+#5000
+1!
+1?
+1@
+0/
+#6000
+1%
+1"
+0!
+1A
+1B
+0?
+0@
+1/
+0J
+1C
+1D
+#7000
+1!
+1?
+1@
+0/
+0K
+1H
+0I
+0D
+1L
+0C
+0<
+1=
+0(
+1'
+1P
+0O
+1J
+1D
+17
+06
+1*
+0+
+#8000
+0!
+0?
+0@
+1/
+#9000
+1!
+1?
+1@
+0/
+1K
+1M
+0J
+0D
+1<
+1(
+1Q
+0P
+18
+07
+1)
+0*
+#10000
+0!
+0?
+0@
+1/
+#11000
+1!
+1?
+1@
+0/
+1N
+0K
+0H
+1T
+0M
+1C
+1J
+0L
+1>
+0<
+0=
+1&
+0(
+0'
+1R
+1M
+0;
+19
+0,
+1.
+#12000
+0%
+0!
+0A
+0?
+0@
+1/
+#13000
+1!
+1?
+1@
+0/
+1K
+0J
+1D
+1<
+1(
+1S
+0R
+1:
+09
+1-
+0.
+#14000
+0!
+0?
+0@
+1/
+#15000
+1!
+1?
+1@
+0/
+0K
+1H
+1J
+1I
+0D
+0T
+1L
+0<
+1=
+0(
+1'
+0S
+0J
+0M
+1;
+0:
+1,
+0-
+#16000
+0!
+0?
+0@
+1/
+#17000
+1!
+1?
+1@
+0/
+0N
+0H
+0I
+0C
+0L
+0>
+0=
+0&
+0'
+0Q
+1O
+1J
+08
+16
+0)
+1+
+#18000
+0"
+0!
+0B
+0?
+0@
+1/
+0J
+#19000
+1!
+1?
+1@
+0/
+#20000
+1"
+0!
+1B
+0?
+0@
+1/
+1J
+#21000
+1!
+1?
+1@
+0/
+1K
+0J
+1I
+1<
+1(
+1J
+#22000
+0!
+0?
+0@
+1/
+#23000
+1!
+1?
+1@
+0/
+#24000
+0!
+0?
+0@
+1/
+#25000
+1!
+1?
+1@
+0/
+#26000
+0!
+0?
+0@
+1/
+#27000
+1!
+1?
+1@
+0/
+#28000
+0#
+0$
+0"
+0!
+0G
+0E
+0B
+0?
+0F
+0@
+1/
+0K
+0J
+0I
+0<
+0(
+#29000
+1!
+1?
+1@
+0/
+#30000

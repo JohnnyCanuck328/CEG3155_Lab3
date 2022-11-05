@@ -1,0 +1,59 @@
+|lab3
+sensor => r.IN1
+sensor => r.IN1
+counterExpired => r.IN1
+counterExpired => r.IN1
+counterExpired => r.IN1
+counterExpired => r.IN1
+counterExpired => r.IN1
+counterExpired => r[1].IN1
+counterExpired => r[3].IN1
+counterExpired => r.IN1
+counterExpired => r.IN1
+clk => enARdFF_2:Y0.i_clock
+clk => enARdFF_2:Y1.i_clock
+clk => enARdFF_2:Y2.i_clock
+reset => enARdFF_2:Y0.i_resetBar
+reset => enARdFF_2:Y1.i_resetBar
+reset => enARdFF_2:Y2.i_resetBar
+enable => enARdFF_2:Y0.i_enable
+enable => enARdFF_2:Y1.i_enable
+enable => enARdFF_2:Y2.i_enable
+mstl[0] <= mstl.DB_MAX_OUTPUT_PORT_TYPE
+mstl[1] <= mstl.DB_MAX_OUTPUT_PORT_TYPE
+mstl[2] <= mstl.DB_MAX_OUTPUT_PORT_TYPE
+sstl[0] <= sstl.DB_MAX_OUTPUT_PORT_TYPE
+sstl[1] <= sstl.DB_MAX_OUTPUT_PORT_TYPE
+sstl[2] <= sstl.DB_MAX_OUTPUT_PORT_TYPE
+debug[0] <= enARdFF_2:Y0.o_q
+debug[1] <= enARdFF_2:Y1.o_q
+debug[2] <= enARdFF_2:Y2.o_q
+
+
+|lab3|enARdFF_2:Y0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab3|enARdFF_2:Y1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab3|enARdFF_2:Y2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
