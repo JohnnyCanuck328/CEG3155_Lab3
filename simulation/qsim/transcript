@@ -27,5 +27,5 @@
 # Loading work.controller_vlg_check_tst
 # Loading altera_ver.PRIM_GDFF_LOW
 # Simulation passed !
-# ** Note: $finish    : testingCont.vwf.vt(500)
+# ** Note: $finish    : testingCont.vwf.vt(251)
 #    Time: 100 ns  Iteration: 0  Instance: /controller_vlg_vec_tst/tb_out

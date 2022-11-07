@@ -4,9 +4,7 @@ use ieee.std_logic_1164.all;
 entity controller is
 	port(clk, carSig, reset: in std_logic; 
 			setWeight: in std_logic_vector(3 downto 0);
-			mainStreetLight, sideStreetLight, state: out std_logic_vector(2 downto 0);
-			shouldReset: out std_logic;
-			countVal, sum: out std_logic_vector(3 downto 0));
+			mainStreetLight, sideStreetLight: out std_logic_vector(2 downto 0));
 end controller;
 
 architecture structCont of controller is
@@ -86,8 +84,4 @@ architecture structCont of controller is
 		fsmCont: lab3 port map(sensor => carSig, changeState => counterExpired, clk => clk, 
 		reset => reset, enable => '1',resetCounter => open, mstl => mainStreetLight, sstl => sideStreetLight, state => stateSig);
 		
-		shouldReset <= NOT(setCounter);
-		countVal <= counterOut;
-		sum <= resetWeight;
-		state <= stateSig;
 end structCont;

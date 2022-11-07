@@ -18,18 +18,6 @@ mainStreetLight[2] <= lab3:fsmCont.mstl[2]
 sideStreetLight[0] <= lab3:fsmCont.sstl[0]
 sideStreetLight[1] <= lab3:fsmCont.sstl[1]
 sideStreetLight[2] <= lab3:fsmCont.sstl[2]
-state[0] <= lab3:fsmCont.state[0]
-state[1] <= lab3:fsmCont.state[1]
-state[2] <= lab3:fsmCont.state[2]
-shouldReset <= setCounter.DB_MAX_OUTPUT_PORT_TYPE
-countVal[0] <= counter:systemCounter.o_Value[0]
-countVal[1] <= counter:systemCounter.o_Value[1]
-countVal[2] <= counter:systemCounter.o_Value[2]
-countVal[3] <= counter:systemCounter.o_Value[3]
-sum[0] <= fourbitaddsub:resetWeightGen.o_Sum[0]
-sum[1] <= fourbitaddsub:resetWeightGen.o_Sum[1]
-sum[2] <= fourbitaddsub:resetWeightGen.o_Sum[2]
-sum[3] <= fourbitaddsub:resetWeightGen.o_Sum[3]
 
 
 |controller|counter:systemCounter
