@@ -2,8 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity lab3 is
-	port(sensor, counterExpired, clk, reset, enable: in std_logic;
-			mstl, sstl, debug: out std_logic_vector(2 downto 0));
+	port(sensor, changeState, clk, reset, enable: in std_logic;
+			resetCounter: out std_logic;
+			mstl, sstl, state: out std_logic_vector(2 downto 0));
 end lab3;
 
 architecture structStateMach of lab3 is
@@ -23,21 +24,21 @@ architecture structStateMach of lab3 is
 	begin
 		
 		r(0) <= y(2) AND NOT(y(1));
-		r(1) <= NOT(counterExpired) AND y(2);
-		r(2) <= counterExpired AND y(1) AND y(0);
+		r(1) <= NOT(changeState) AND y(2);
+		r(2) <= changeState AND y(1) AND y(0);
 		ffIn(2) <= r(0) OR r(1) OR r(2);
 	
-		r(3) <= NOT(counterExpired) AND y(1);
-		r(4) <= counterExpired AND y(2) AND y(0);
-		r(5) <= counterExpired AND NOT(y(2)) AND y(1) AND NOT(y(0));
+		r(3) <= NOT(changeState) AND y(1);
+		r(4) <= changeState AND y(2) AND y(0);
+		r(5) <= changeState AND NOT(y(2)) AND y(1) AND NOT(y(0));
 		r(6) <= sensor AND y(0) AND NOT(y(1)) AND NOT(y(2));
 		ffIn(1) <= r(3) OR r(4) OR r(5) OR r(6);
 		--ffIn(1) <= '1';
 		
-		r(7) <= counterExpired AND NOT(y(2)) AND NOT(y(0));
-		r(8) <= counterExpired AND NOT(y(1)) AND NOT(y(0));
-		r(9) <= NOT(counterExpired) AND y(2) AND y(0);
-		r(10) <= NOT(counterExpired) AND y(1) AND y(0);
+		r(7) <= changeState AND NOT(y(2)) AND NOT(y(0));
+		r(8) <= changeState AND NOT(y(1)) AND NOT(y(0));
+		r(9) <= NOT(changeState) AND y(2) AND y(0);
+		r(10) <= NOT(changeState) AND y(1) AND y(0);
 		r(11) <= NOT(sensor) AND NOT(y(2)) AND NOT(y(1)) AND y(0);
 		ffIn(0) <= r(7) OR r(8) OR r(9) OR r(10) OR r(11);
 		
@@ -55,6 +56,7 @@ architecture structStateMach of lab3 is
 		mstl(1) <= NOT(y(2)) AND y(1) AND NOT(y(0));
 		mstl(2) <= y(2) OR (y(1) AND y(0));
 		
-		debug <= y;
+		state <= y;
+		resetCounter <= changeState;
 		
 end structStateMach;

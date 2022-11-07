@@ -122,16 +122,6 @@ SIGNAL("clk")
 	PARENT = "";
 }
 
-SIGNAL("counterExpired")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
 SIGNAL("debug")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
@@ -200,6 +190,66 @@ SIGNAL("sensor")
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
 	PARENT = "";
+}
+
+SIGNAL("changeState")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("resetCounter")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("state")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 3;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("state[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "state";
+}
+
+SIGNAL("state[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "state";
+}
+
+SIGNAL("state[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "state";
 }
 
 TRANSITION_LIST("mstl[2]")
@@ -276,20 +326,6 @@ TRANSITION_LIST("clk")
 	}
 }
 
-TRANSITION_LIST("counterExpired")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL 1 FOR 4.0;
-		LEVEL 0 FOR 2.0;
-		LEVEL 1 FOR 12.0;
-		LEVEL 0 FOR 2.0;
-		LEVEL 1 FOR 8.0;
-		LEVEL 0 FOR 2.0;
-	}
-}
-
 TRANSITION_LIST("debug[2]")
 {
 	NODE
@@ -352,6 +388,55 @@ TRANSITION_LIST("sensor")
 	}
 }
 
+TRANSITION_LIST("changeState")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 4.0;
+		LEVEL 1 FOR 4.0;
+		LEVEL 0 FOR 4.0;
+		LEVEL 1 FOR 12.0;
+		LEVEL 0 FOR 6.0;
+	}
+}
+
+TRANSITION_LIST("resetCounter")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 30.0;
+	}
+}
+
+TRANSITION_LIST("state[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 30.0;
+	}
+}
+
+TRANSITION_LIST("state[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 30.0;
+	}
+}
+
+TRANSITION_LIST("state[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 30.0;
+	}
+}
+
 DISPLAY_LINE
 {
 	CHANNEL = "clk";
@@ -381,7 +466,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "counterExpired";
+	CHANNEL = "changeState";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
@@ -515,6 +600,55 @@ DISPLAY_LINE
 	TREE_INDEX = 16;
 	TREE_LEVEL = 1;
 	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 0;
+	CHILDREN = 18, 19, 20;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 18;
+	TREE_LEVEL = 1;
+	PARENT = 17;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 19;
+	TREE_LEVEL = 1;
+	PARENT = 17;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 20;
+	TREE_LEVEL = 1;
+	PARENT = 17;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "resetCounter";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 21;
+	TREE_LEVEL = 0;
 }
 
 TIME_BAR

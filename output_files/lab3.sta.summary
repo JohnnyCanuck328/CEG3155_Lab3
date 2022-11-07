@@ -3,39 +3,243 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -0.613
-TNS   : -1.429
+Slack : -0.942
+TNS   : -2.095
+
+Type  : Slow 1200mV 85C Model Setup 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : 0.195
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.210
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : 0.425
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -0.147
+TNS   : -0.147
+
+Type  : Slow 1200mV 85C Model Hold 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -0.145
+TNS   : -0.145
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : 0.402
+Slack : -0.078
+TNS   : -0.145
+
+Type  : Slow 1200mV 85C Model Hold 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.445
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : -4.559
+TNS   : -4.559
+
+Type  : Slow 1200mV 85C Model Recovery 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -4.275
+TNS   : -4.275
+
+Type  : Slow 1200mV 85C Model Recovery 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -4.094
+TNS   : -4.094
+
+Type  : Slow 1200mV 85C Model Recovery 'clk'
+Slack : -1.831
+TNS   : -1.831
+
+Type  : Slow 1200mV 85C Model Removal 'clk'
+Slack : -1.927
+TNS   : -1.927
+
+Type  : Slow 1200mV 85C Model Removal 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -0.073
+TNS   : -0.073
+
+Type  : Slow 1200mV 85C Model Removal 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : 0.084
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.380
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -6.855
+TNS   : -8.140
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -1.285
+TNS   : -1.285
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -1.285
+TNS   : -1.285
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : -1.285
+TNS   : -1.285
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -0.454
-TNS   : -1.004
+Slack : -0.739
+TNS   : -1.645
+
+Type  : Slow 1200mV 0C Model Setup 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : 0.222
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.297
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : 0.418
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -0.124
+TNS   : -0.124
+
+Type  : Slow 1200mV 0C Model Hold 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -0.102
+TNS   : -0.102
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.353
+Slack : -0.041
+TNS   : -0.077
+
+Type  : Slow 1200mV 0C Model Hold 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.398
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : -4.110
+TNS   : -4.110
+
+Type  : Slow 1200mV 0C Model Recovery 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -3.860
+TNS   : -3.860
+
+Type  : Slow 1200mV 0C Model Recovery 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -3.679
+TNS   : -3.679
+
+Type  : Slow 1200mV 0C Model Recovery 'clk'
+Slack : -1.558
+TNS   : -1.558
+
+Type  : Slow 1200mV 0C Model Removal 'clk'
+Slack : -1.756
+TNS   : -1.756
+
+Type  : Slow 1200mV 0C Model Removal 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -0.060
+TNS   : -0.060
+
+Type  : Slow 1200mV 0C Model Removal 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : 0.075
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.336
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -6.855
+TNS   : -8.140
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -1.285
+TNS   : -1.285
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -1.285
+TNS   : -1.285
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : -1.285
+TNS   : -1.285
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : 0.210
+Slack : 0.045
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : 0.515
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.624
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : 0.181
+Slack : -0.245
+TNS   : -0.900
+
+Type  : Fast 1200mV 0C Model Hold 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -0.146
+TNS   : -0.146
+
+Type  : Fast 1200mV 0C Model Hold 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -0.113
+TNS   : -0.113
+
+Type  : Fast 1200mV 0C Model Hold 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.206
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : -2.095
+TNS   : -2.095
+
+Type  : Fast 1200mV 0C Model Recovery 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -1.946
+TNS   : -1.946
+
+Type  : Fast 1200mV 0C Model Recovery 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -1.858
+TNS   : -1.858
+
+Type  : Fast 1200mV 0C Model Recovery 'clk'
+Slack : -0.373
+TNS   : -0.373
+
+Type  : Fast 1200mV 0C Model Removal 'clk'
+Slack : -1.104
+TNS   : -1.104
+
+Type  : Fast 1200mV 0C Model Removal 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -0.057
+TNS   : -0.057
+
+Type  : Fast 1200mV 0C Model Removal 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : 0.012
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : 0.167
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -6.183
+TNS   : -7.244
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit0|int_q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit1|int_q'
+Slack : -1.000
+TNS   : -1.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'counter:systemCounter|enARdFF_2:bit2|int_q'
+Slack : -1.000
+TNS   : -1.000
 
 ------------------------------------------------------------

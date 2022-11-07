@@ -25,14 +25,14 @@ HEADER
 	VERSION = 1;
 	TIME_UNIT = ns;
 	DATA_OFFSET = 0.0;
-	DATA_DURATION = 30.0;
+	DATA_DURATION = 100.0;
 	SIMULATION_TIME = 0.0;
 	GRID_PHASE = 0.0;
 	GRID_PERIOD = 2.0;
 	GRID_DUTY_CYCLE = 50;
 }
 
-SIGNAL("mstl")
+SIGNAL("mainStreetLight")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -42,37 +42,87 @@ SIGNAL("mstl")
 	PARENT = "";
 }
 
-SIGNAL("mstl[2]")
+SIGNAL("mainStreetLight[2]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "mstl";
+	PARENT = "mainStreetLight";
 }
 
-SIGNAL("mstl[1]")
+SIGNAL("mainStreetLight[1]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "mstl";
+	PARENT = "mainStreetLight";
 }
 
-SIGNAL("mstl[0]")
+SIGNAL("mainStreetLight[0]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "mstl";
+	PARENT = "mainStreetLight";
 }
 
-SIGNAL("sstl")
+SIGNAL("setWeight")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 4;
+	LSB_INDEX = 0;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("setWeight[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "setWeight";
+}
+
+SIGNAL("setWeight[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "setWeight";
+}
+
+SIGNAL("setWeight[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "setWeight";
+}
+
+SIGNAL("setWeight[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "setWeight";
+}
+
+SIGNAL("sideStreetLight")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = BUS;
@@ -82,97 +132,137 @@ SIGNAL("sstl")
 	PARENT = "";
 }
 
-SIGNAL("sstl[2]")
+SIGNAL("sideStreetLight[2]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "sstl";
+	PARENT = "sideStreetLight";
 }
 
-SIGNAL("sstl[1]")
+SIGNAL("sideStreetLight[1]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "sstl";
+	PARENT = "sideStreetLight";
 }
 
-SIGNAL("sstl[0]")
+SIGNAL("sideStreetLight[0]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "sstl";
+	PARENT = "sideStreetLight";
+}
+
+SIGNAL("state")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 3;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("state[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "state";
+}
+
+SIGNAL("state[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "state";
+}
+
+SIGNAL("state[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "state";
+}
+
+SIGNAL("countVal")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 4;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("countVal[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "countVal";
+}
+
+SIGNAL("countVal[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "countVal";
+}
+
+SIGNAL("countVal[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "countVal";
+}
+
+SIGNAL("countVal[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "countVal";
+}
+
+SIGNAL("carSig")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
 }
 
 SIGNAL("clk")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("counterExpired")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("debug")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = BUS;
-	WIDTH = 3;
-	LSB_INDEX = 0;
-	DIRECTION = OUTPUT;
-	PARENT = "";
-}
-
-SIGNAL("debug[2]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "debug";
-}
-
-SIGNAL("debug[1]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "debug";
-}
-
-SIGNAL("debug[0]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "debug";
-}
-
-SIGNAL("enable")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -192,17 +282,67 @@ SIGNAL("reset")
 	PARENT = "";
 }
 
-SIGNAL("sensor")
+SIGNAL("shouldReset")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = INPUT;
+	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
-TRANSITION_LIST("mstl[2]")
+SIGNAL("sum")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 4;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("sum[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "sum";
+}
+
+SIGNAL("sum[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "sum";
+}
+
+SIGNAL("sum[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "sum";
+}
+
+SIGNAL("sum[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "sum";
+}
+
+TRANSITION_LIST("mainStreetLight[2]")
 {
 	NODE
 	{
@@ -210,14 +350,14 @@ TRANSITION_LIST("mstl[2]")
 		NODE
 		{
 			REPEAT = 1;
-			LEVEL 0 FOR 9.0;
-			LEVEL 1 FOR 8.0;
+			LEVEL 0 FOR 39.0;
+			LEVEL 1 FOR 48.0;
 			LEVEL 0 FOR 13.0;
 		}
 	}
 }
 
-TRANSITION_LIST("mstl[1]")
+TRANSITION_LIST("mainStreetLight[1]")
 {
 	NODE
 	{
@@ -225,14 +365,14 @@ TRANSITION_LIST("mstl[1]")
 		NODE
 		{
 			REPEAT = 1;
-			LEVEL 0 FOR 7.0;
-			LEVEL 1 FOR 2.0;
-			LEVEL 0 FOR 21.0;
+			LEVEL 0 FOR 27.0;
+			LEVEL 1 FOR 12.0;
+			LEVEL 0 FOR 61.0;
 		}
 	}
 }
 
-TRANSITION_LIST("mstl[0]")
+TRANSITION_LIST("mainStreetLight[0]")
 {
 	NODE
 	{
@@ -240,14 +380,14 @@ TRANSITION_LIST("mstl[0]")
 		NODE
 		{
 			REPEAT = 1;
-			LEVEL 1 FOR 7.0;
-			LEVEL 0 FOR 10.0;
+			LEVEL 1 FOR 27.0;
+			LEVEL 0 FOR 60.0;
 			LEVEL 1 FOR 13.0;
 		}
 	}
 }
 
-TRANSITION_LIST("sstl[2]")
+TRANSITION_LIST("setWeight[3]")
 {
 	NODE
 	{
@@ -255,14 +395,12 @@ TRANSITION_LIST("sstl[2]")
 		NODE
 		{
 			REPEAT = 1;
-			LEVEL 1 FOR 11.0;
-			LEVEL 0 FOR 4.0;
-			LEVEL 1 FOR 15.0;
+			LEVEL 0 FOR 100.0;
 		}
 	}
 }
 
-TRANSITION_LIST("sstl[1]")
+TRANSITION_LIST("setWeight[2]")
 {
 	NODE
 	{
@@ -270,14 +408,115 @@ TRANSITION_LIST("sstl[1]")
 		NODE
 		{
 			REPEAT = 1;
+			LEVEL 1 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("setWeight[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("setWeight[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 1 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sideStreetLight[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 1 FOR 51.0;
+			LEVEL 0 FOR 24.0;
+			LEVEL 1 FOR 25.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sideStreetLight[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 63.0;
+			LEVEL 1 FOR 12.0;
+			LEVEL 0 FOR 25.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sideStreetLight[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 51.0;
+			LEVEL 1 FOR 12.0;
+			LEVEL 0 FOR 37.0;
+		}
+	}
+}
+
+TRANSITION_LIST("state[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 51.0;
+			LEVEL 1 FOR 36.0;
 			LEVEL 0 FOR 13.0;
-			LEVEL 1 FOR 2.0;
-			LEVEL 0 FOR 15.0;
 		}
 	}
 }
 
-TRANSITION_LIST("sstl[0]")
+TRANSITION_LIST("state[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 27.0;
+			LEVEL 1 FOR 24.0;
+			LEVEL 0 FOR 24.0;
+			LEVEL 1 FOR 12.0;
+			LEVEL 0 FOR 13.0;
+		}
+	}
+}
+
+TRANSITION_LIST("state[0]")
 {
 	NODE
 	{
@@ -286,8 +525,162 @@ TRANSITION_LIST("sstl[0]")
 		{
 			REPEAT = 1;
 			LEVEL 0 FOR 11.0;
+			LEVEL 1 FOR 16.0;
+			LEVEL 0 FOR 12.0;
+			LEVEL 1 FOR 12.0;
+			LEVEL 0 FOR 12.0;
+			LEVEL 1 FOR 12.0;
+			LEVEL 0 FOR 24.0;
+			LEVEL 1 FOR 1.0;
+		}
+	}
+}
+
+TRANSITION_LIST("countVal[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("countVal[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 7.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 12.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 1.0;
+		}
+	}
+}
+
+TRANSITION_LIST("countVal[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 3.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 12.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 8.0;
+			LEVEL 1 FOR 4.0;
+			LEVEL 0 FOR 5.0;
+		}
+	}
+}
+
+TRANSITION_LIST("countVal[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 1.0;
 			LEVEL 1 FOR 2.0;
-			LEVEL 0 FOR 17.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 3.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 2.0;
+			LEVEL 0 FOR 1.0;
+		}
+	}
+}
+
+TRANSITION_LIST("carSig")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 26.0;
+			LEVEL 1 FOR 10.0;
+			LEVEL 0 FOR 64.0;
 		}
 	}
 }
@@ -330,91 +723,76 @@ TRANSITION_LIST("clk")
 			LEVEL 1 FOR 1.0;
 			LEVEL 0 FOR 1.0;
 			LEVEL 1 FOR 1.0;
-		}
-	}
-}
-
-TRANSITION_LIST("counterExpired")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 1;
-			LEVEL 1 FOR 4.0;
-			LEVEL 0 FOR 2.0;
-			LEVEL 1 FOR 12.0;
-			LEVEL 0 FOR 2.0;
-			LEVEL 1 FOR 8.0;
-			LEVEL 0 FOR 2.0;
-		}
-	}
-}
-
-TRANSITION_LIST("debug[2]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 1;
-			LEVEL 0 FOR 11.0;
-			LEVEL 1 FOR 6.0;
-			LEVEL 0 FOR 13.0;
-		}
-	}
-}
-
-TRANSITION_LIST("debug[1]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 1;
-			LEVEL 0 FOR 7.0;
-			LEVEL 1 FOR 4.0;
-			LEVEL 0 FOR 4.0;
-			LEVEL 1 FOR 2.0;
-			LEVEL 0 FOR 13.0;
-		}
-	}
-}
-
-TRANSITION_LIST("debug[0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 1;
-			LEVEL 0 FOR 3.0;
-			LEVEL 1 FOR 4.0;
-			LEVEL 0 FOR 2.0;
-			LEVEL 1 FOR 2.0;
-			LEVEL 0 FOR 2.0;
-			LEVEL 1 FOR 2.0;
-			LEVEL 0 FOR 6.0;
-			LEVEL 1 FOR 7.0;
-			LEVEL 0 FOR 2.0;
-		}
-	}
-}
-
-TRANSITION_LIST("enable")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 1;
-			LEVEL 1 FOR 28.0;
-			LEVEL 0 FOR 2.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 1.0;
 		}
 	}
 }
@@ -427,14 +805,12 @@ TRANSITION_LIST("reset")
 		NODE
 		{
 			REPEAT = 1;
-			LEVEL 0 FOR 2.0;
-			LEVEL 1 FOR 26.0;
-			LEVEL 0 FOR 2.0;
+			LEVEL 1 FOR 100.0;
 		}
 	}
 }
 
-TRANSITION_LIST("sensor")
+TRANSITION_LIST("shouldReset")
 {
 	NODE
 	{
@@ -442,9 +818,61 @@ TRANSITION_LIST("sensor")
 		NODE
 		{
 			REPEAT = 1;
-			LEVEL 0 FOR 6.0;
-			LEVEL 1 FOR 6.0;
-			LEVEL 0 FOR 18.0;
+			LEVEL 1 FOR 26.0;
+			LEVEL 0 FOR 1.0;
+			LEVEL 1 FOR 73.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sum[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sum[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 1 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sum[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 1 FOR 100.0;
+		}
+	}
+}
+
+TRANSITION_LIST("sum[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 100.0;
 		}
 	}
 }
@@ -469,7 +897,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "enable";
+	CHANNEL = "carSig";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
@@ -478,105 +906,107 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "counterExpired";
-	EXPAND_STATUS = COLLAPSED;
+	CHANNEL = "setWeight";
+	EXPAND_STATUS = EXPANDED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
 	TREE_LEVEL = 0;
+	CHILDREN = 4, 5, 6, 7;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "sensor";
+	CHANNEL = "setWeight[3]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 4;
-	TREE_LEVEL = 0;
+	TREE_LEVEL = 1;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "mstl";
+	CHANNEL = "setWeight[2]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 5;
-	TREE_LEVEL = 0;
-	CHILDREN = 6, 7, 8;
+	TREE_LEVEL = 1;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "mstl[2]";
+	CHANNEL = "setWeight[1]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 6;
 	TREE_LEVEL = 1;
-	PARENT = 5;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "mstl[1]";
+	CHANNEL = "setWeight[0]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 7;
 	TREE_LEVEL = 1;
-	PARENT = 5;
+	PARENT = 3;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "mstl[0]";
+	CHANNEL = "countVal";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 8;
-	TREE_LEVEL = 1;
-	PARENT = 5;
+	TREE_LEVEL = 0;
+	CHILDREN = 9, 10, 11, 12;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "sstl";
+	CHANNEL = "countVal[3]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 9;
-	TREE_LEVEL = 0;
-	CHILDREN = 10, 11, 12;
+	TREE_LEVEL = 1;
+	PARENT = 8;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "sstl[2]";
+	CHANNEL = "countVal[2]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 10;
 	TREE_LEVEL = 1;
-	PARENT = 9;
+	PARENT = 8;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "sstl[1]";
+	CHANNEL = "countVal[1]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 11;
 	TREE_LEVEL = 1;
-	PARENT = 9;
+	PARENT = 8;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "sstl[0]";
+	CHANNEL = "countVal[0]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 12;
 	TREE_LEVEL = 1;
-	PARENT = 9;
+	PARENT = 8;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "debug";
+	CHANNEL = "mainStreetLight";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 13;
@@ -586,7 +1016,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "debug[2]";
+	CHANNEL = "mainStreetLight[2]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 14;
@@ -596,7 +1026,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "debug[1]";
+	CHANNEL = "mainStreetLight[1]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 15;
@@ -606,12 +1036,151 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "debug[0]";
+	CHANNEL = "mainStreetLight[0]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 16;
 	TREE_LEVEL = 1;
 	PARENT = 13;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sideStreetLight";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 17;
+	TREE_LEVEL = 0;
+	CHILDREN = 18, 19, 20;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sideStreetLight[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 18;
+	TREE_LEVEL = 1;
+	PARENT = 17;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sideStreetLight[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 19;
+	TREE_LEVEL = 1;
+	PARENT = 17;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sideStreetLight[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 20;
+	TREE_LEVEL = 1;
+	PARENT = 17;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 21;
+	TREE_LEVEL = 0;
+	CHILDREN = 22, 23, 24;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 22;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 23;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "state[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 24;
+	TREE_LEVEL = 1;
+	PARENT = 21;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sum";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 25;
+	TREE_LEVEL = 0;
+	CHILDREN = 26, 27, 28, 29;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sum[3]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 26;
+	TREE_LEVEL = 1;
+	PARENT = 25;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sum[2]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 27;
+	TREE_LEVEL = 1;
+	PARENT = 25;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sum[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 28;
+	TREE_LEVEL = 1;
+	PARENT = 25;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "sum[0]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 29;
+	TREE_LEVEL = 1;
+	PARENT = 25;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "shouldReset";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 30;
+	TREE_LEVEL = 0;
 }
 
 TIME_BAR

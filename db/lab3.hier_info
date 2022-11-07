@@ -1,15 +1,316 @@
-|lab3
+|controller
+clk => counter:systemCounter.i_clock
+clk => lab3:fsmCont.clk
+carSig => setCounter.IN1
+carSig => lab3:fsmCont.sensor
+reset => lab3:fsmCont.reset
+setWeight[0] => fourBitComparator:countComp.i_Bi[0]
+setWeight[0] => fourbitaddsub:resetWeightGen.i_Ai[0]
+setWeight[1] => fourBitComparator:countComp.i_Bi[1]
+setWeight[1] => fourbitaddsub:resetWeightGen.i_Ai[1]
+setWeight[2] => fourBitComparator:countComp.i_Bi[2]
+setWeight[2] => fourbitaddsub:resetWeightGen.i_Ai[2]
+setWeight[3] => fourBitComparator:countComp.i_Bi[3]
+setWeight[3] => fourbitaddsub:resetWeightGen.i_Ai[3]
+mainStreetLight[0] <= lab3:fsmCont.mstl[0]
+mainStreetLight[1] <= lab3:fsmCont.mstl[1]
+mainStreetLight[2] <= lab3:fsmCont.mstl[2]
+sideStreetLight[0] <= lab3:fsmCont.sstl[0]
+sideStreetLight[1] <= lab3:fsmCont.sstl[1]
+sideStreetLight[2] <= lab3:fsmCont.sstl[2]
+state[0] <= lab3:fsmCont.state[0]
+state[1] <= lab3:fsmCont.state[1]
+state[2] <= lab3:fsmCont.state[2]
+shouldReset <= setCounter.DB_MAX_OUTPUT_PORT_TYPE
+countVal[0] <= counter:systemCounter.o_Value[0]
+countVal[1] <= counter:systemCounter.o_Value[1]
+countVal[2] <= counter:systemCounter.o_Value[2]
+countVal[3] <= counter:systemCounter.o_Value[3]
+sum[0] <= fourbitaddsub:resetWeightGen.o_Sum[0]
+sum[1] <= fourbitaddsub:resetWeightGen.o_Sum[1]
+sum[2] <= fourbitaddsub:resetWeightGen.o_Sum[2]
+sum[3] <= fourbitaddsub:resetWeightGen.o_Sum[3]
+
+
+|controller|counter:systemCounter
+i_resetBar => enARdFF_2:bit0.i_resetBar
+i_resetBar => enARdFF_2:bit1.i_resetBar
+i_resetBar => enARdFF_2:bit2.i_resetBar
+i_resetBar => enARdFF_2:bit3.i_resetBar
+i_load => enARdFF_2:bit0.i_enable
+i_load => enARdFF_2:bit1.i_enable
+i_load => enARdFF_2:bit2.i_enable
+i_load => enARdFF_2:bit3.i_enable
+i_clock => enARdFF_2:bit0.i_clock
+o_Value[0] <= enARdFF_2:bit0.o_q
+o_Value[1] <= enARdFF_2:bit1.o_q
+o_Value[2] <= enARdFF_2:bit2.o_q
+o_Value[3] <= enARdFF_2:bit3.o_q
+
+
+|controller|counter:systemCounter|enARdFF_2:bit0
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|counter:systemCounter|enARdFF_2:bit1
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|counter:systemCounter|enARdFF_2:bit2
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|counter:systemCounter|enARdFF_2:bit3
+i_resetBar => int_q.ACLR
+i_d => int_q.DATAIN
+i_enable => int_q.ENA
+i_clock => int_q.CLK
+o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:countComp
+i_Ai[0] => oneBitComparator:comp0.i_Ai
+i_Ai[1] => oneBitComparator:comp1.i_Ai
+i_Ai[2] => oneBitComparator:comp2.i_Ai
+i_Ai[3] => oneBitComparator:comp3.i_Ai
+i_Bi[0] => oneBitComparator:comp0.i_Bi
+i_Bi[1] => oneBitComparator:comp1.i_Bi
+i_Bi[2] => oneBitComparator:comp2.i_Bi
+i_Bi[3] => oneBitComparator:comp3.i_Bi
+o_GT <= oneBitComparator:comp0.o_GT
+o_LT <= oneBitComparator:comp0.o_LT
+o_EQ <= o_EQ.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:countComp|oneBitComparator:comp3
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:countComp|oneBitComparator:comp2
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:countComp|oneBitComparator:comp1
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:countComp|oneBitComparator:comp0
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourbitaddsub:resetWeightGen
+i_Ai[0] => oneBitAdder:bit0.i_Ai
+i_Ai[1] => oneBitAdder:bit1.i_Ai
+i_Ai[2] => oneBitAdder:bit2.i_Ai
+i_Ai[3] => oneBitAdder:bit3.i_Ai
+i_Bi[0] => XORout[0].IN0
+i_Bi[1] => XORout[1].IN0
+i_Bi[2] => XORout[2].IN0
+i_Bi[3] => XORout[3].IN0
+carryOut <= oneBitAdder:bit3.o_CarryOut
+controller => XORout[0].IN1
+controller => XORout[1].IN1
+controller => XORout[2].IN1
+controller => XORout[3].IN1
+controller => oneBitAdder:bit0.i_CarryIn
+o_Sum[0] <= oneBitAdder:bit0.o_Sum
+o_Sum[1] <= oneBitAdder:bit1.o_Sum
+o_Sum[2] <= oneBitAdder:bit2.o_Sum
+o_Sum[3] <= oneBitAdder:bit3.o_Sum
+overflow <= overflow.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourbitaddsub:resetWeightGen|oneBitAdder:bit0
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourbitaddsub:resetWeightGen|oneBitAdder:bit1
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourbitaddsub:resetWeightGen|oneBitAdder:bit2
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourbitaddsub:resetWeightGen|oneBitAdder:bit3
+i_CarryIn => int_CarryOut3.IN0
+i_CarryIn => int_CarryOut1.IN0
+i_Ai => int_CarryOut3.IN1
+i_Ai => int_CarryOut1.IN1
+i_Bi => int_CarryOut2.IN1
+i_Bi => o_Sum.IN1
+o_Sum <= o_Sum.DB_MAX_OUTPUT_PORT_TYPE
+o_CarryOut <= o_CarryOut.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:resetComp
+i_Ai[0] => oneBitComparator:comp0.i_Ai
+i_Ai[1] => oneBitComparator:comp1.i_Ai
+i_Ai[2] => oneBitComparator:comp2.i_Ai
+i_Ai[3] => oneBitComparator:comp3.i_Ai
+i_Bi[0] => oneBitComparator:comp0.i_Bi
+i_Bi[1] => oneBitComparator:comp1.i_Bi
+i_Bi[2] => oneBitComparator:comp2.i_Bi
+i_Bi[3] => oneBitComparator:comp3.i_Bi
+o_GT <= oneBitComparator:comp0.o_GT
+o_LT <= oneBitComparator:comp0.o_LT
+o_EQ <= o_EQ.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:resetComp|oneBitComparator:comp3
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:resetComp|oneBitComparator:comp2
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:resetComp|oneBitComparator:comp1
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|fourBitComparator:resetComp|oneBitComparator:comp0
+i_GTPrevious => int_GT2.IN0
+i_GTPrevious => int_GT1.IN0
+i_GTPrevious => int_LT2.IN0
+i_LTPrevious => int_LT2.IN1
+i_LTPrevious => int_GT1.IN1
+i_LTPrevious => int_GT2.IN1
+i_Ai => int_GT1.IN1
+i_Ai => int_LT1.IN1
+i_Bi => int_LT1.IN1
+i_Bi => int_GT1.IN1
+o_GT <= int_GT.DB_MAX_OUTPUT_PORT_TYPE
+o_LT <= int_LT.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|controller|lab3:fsmCont
 sensor => r.IN1
 sensor => r.IN1
-counterExpired => r.IN1
-counterExpired => r.IN1
-counterExpired => r.IN1
-counterExpired => r.IN1
-counterExpired => r.IN1
-counterExpired => r[1].IN1
-counterExpired => r[3].IN1
-counterExpired => r.IN1
-counterExpired => r.IN1
+changeState => r.IN1
+changeState => r.IN1
+changeState => r.IN1
+changeState => r.IN1
+changeState => r.IN1
+changeState => resetCounter.DATAIN
+changeState => r[1].IN1
+changeState => r[3].IN1
+changeState => r.IN1
+changeState => r.IN1
 clk => enARdFF_2:Y0.i_clock
 clk => enARdFF_2:Y1.i_clock
 clk => enARdFF_2:Y2.i_clock
@@ -19,18 +320,19 @@ reset => enARdFF_2:Y2.i_resetBar
 enable => enARdFF_2:Y0.i_enable
 enable => enARdFF_2:Y1.i_enable
 enable => enARdFF_2:Y2.i_enable
+resetCounter <= changeState.DB_MAX_OUTPUT_PORT_TYPE
 mstl[0] <= mstl.DB_MAX_OUTPUT_PORT_TYPE
 mstl[1] <= mstl.DB_MAX_OUTPUT_PORT_TYPE
 mstl[2] <= mstl.DB_MAX_OUTPUT_PORT_TYPE
 sstl[0] <= sstl.DB_MAX_OUTPUT_PORT_TYPE
 sstl[1] <= sstl.DB_MAX_OUTPUT_PORT_TYPE
 sstl[2] <= sstl.DB_MAX_OUTPUT_PORT_TYPE
-debug[0] <= enARdFF_2:Y0.o_q
-debug[1] <= enARdFF_2:Y1.o_q
-debug[2] <= enARdFF_2:Y2.o_q
+state[0] <= enARdFF_2:Y0.o_q
+state[1] <= enARdFF_2:Y1.o_q
+state[2] <= enARdFF_2:Y2.o_q
 
 
-|lab3|enARdFF_2:Y0
+|controller|lab3:fsmCont|enARdFF_2:Y0
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -39,7 +341,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|lab3|enARdFF_2:Y1
+|controller|lab3:fsmCont|enARdFF_2:Y1
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA
@@ -48,7 +350,7 @@ o_q <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 o_qBar <= int_q.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|lab3|enARdFF_2:Y2
+|controller|lab3:fsmCont|enARdFF_2:Y2
 i_resetBar => int_q.ACLR
 i_d => int_q.DATAIN
 i_enable => int_q.ENA

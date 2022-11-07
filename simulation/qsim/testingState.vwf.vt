@@ -18,7 +18,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "11/05/2022 17:28:26"
+// Generated on "11/06/2022 18:12:13"
                                                                         
 // Verilog Self-Checking Test Bench (with test vectors) for design :    lab3
 // 
@@ -27,15 +27,15 @@
 
 `timescale 1 ps/ 1 ps
 module lab3_vlg_sample_tst(
+	changeState,
 	clk,
-	counterExpired,
 	enable,
 	reset,
 	sensor,
 	sampler_tx
 );
+input  changeState;
 input  clk;
-input  counterExpired;
 input  enable;
 input  reset;
 input  sensor;
@@ -43,7 +43,7 @@ output sampler_tx;
 
 reg sample;
 time current_time;
-always @(clk or counterExpired or enable or reset or sensor)
+always @(changeState or clk or enable or reset or sensor)
                                                                                 
 begin                                                 
  if ($realtime > 0)                                   
@@ -63,38 +63,44 @@ assign sampler_tx = sample;
 endmodule
 
 module lab3_vlg_check_tst (
-	debug,
 	mstl,
+	resetCounter,
 	sstl,
+	state,
 	sampler_rx
 );
-input [2:0] debug;
 input [2:0] mstl;
+input  resetCounter;
 input [2:0] sstl;
+input [2:0] state;
 input sampler_rx;
 
-reg [2:0] debug_expected;
 reg [2:0] mstl_expected;
+reg  resetCounter_expected;
 reg [2:0] sstl_expected;
+reg [2:0] state_expected;
 
-reg [2:0] debug_prev;
 reg [2:0] mstl_prev;
+reg  resetCounter_prev;
 reg [2:0] sstl_prev;
+reg [2:0] state_prev;
 
-reg [2:0] debug_expected_prev;
 reg [2:0] mstl_expected_prev;
+reg  resetCounter_expected_prev;
 reg [2:0] sstl_expected_prev;
+reg [2:0] state_expected_prev;
 
-reg [2:0] last_debug_exp;
 reg [2:0] last_mstl_exp;
+reg  last_resetCounter_exp;
 reg [2:0] last_sstl_exp;
+reg [2:0] last_state_exp;
 
 reg trigger;
 
 integer i;
 integer nummismatches;
 
-reg [1:3] on_first_change ;
+reg [1:4] on_first_change ;
 
 
 initial
@@ -102,25 +108,27 @@ begin
 trigger = 0;
 i = 0;
 nummismatches = 0;
-on_first_change = 3'b1;
+on_first_change = 4'b1;
 end
 
 // update real /o prevs
 
 always @(trigger)
 begin
-	debug_prev = debug;
 	mstl_prev = mstl;
+	resetCounter_prev = resetCounter;
 	sstl_prev = sstl;
+	state_prev = state;
 end
 
 // update expected /o prevs
 
 always @(trigger)
 begin
-	debug_expected_prev = debug_expected;
 	mstl_expected_prev = mstl_expected;
+	resetCounter_expected_prev = resetCounter_expected;
 	sstl_expected_prev = sstl_expected;
+	state_expected_prev = state_expected;
 end
 
 
@@ -160,26 +168,29 @@ begin
 	sstl_expected[0] = 1'bX;
 	sstl_expected[0] = #19000 1'b0;
 end 
-// expected debug[ 2 ]
+// expected state[ 2 ]
 initial
 begin
-	debug_expected[2] = 1'bX;
-	debug_expected[2] = #19000 1'b0;
+	state_expected[2] = 1'bX;
 end 
-// expected debug[ 1 ]
+// expected state[ 1 ]
 initial
 begin
-	debug_expected[1] = 1'bX;
-	debug_expected[1] = #19000 1'b0;
+	state_expected[1] = 1'bX;
 end 
-// expected debug[ 0 ]
+// expected state[ 0 ]
 initial
 begin
-	debug_expected[0] = 1'bX;
-	debug_expected[0] = #19000 1'b0;
+	state_expected[0] = 1'bX;
+end 
+
+// expected resetCounter
+initial
+begin
+	resetCounter_expected = 1'bX;
 end 
 // generate trigger
-always @(debug_expected or debug or mstl_expected or mstl or sstl_expected or sstl)
+always @(mstl_expected or mstl or resetCounter_expected or resetCounter or sstl_expected or sstl or state_expected or state)
 begin
 	trigger <= ~trigger;
 end
@@ -189,86 +200,60 @@ begin
 `ifdef debug_tbench
 	$display("Scanning pattern %d @time = %t",i,$realtime );
 	i = i + 1;
-	$display("| expected debug = %b | expected mstl = %b | expected sstl = %b | ",debug_expected_prev,mstl_expected_prev,sstl_expected_prev);
-	$display("| real debug = %b | real mstl = %b | real sstl = %b | ",debug_prev,mstl_prev,sstl_prev);
+	$display("| expected mstl = %b | expected resetCounter = %b | expected sstl = %b | expected state = %b | ",mstl_expected_prev,resetCounter_expected_prev,sstl_expected_prev,state_expected_prev);
+	$display("| real mstl = %b | real resetCounter = %b | real sstl = %b | real state = %b | ",mstl_prev,resetCounter_prev,sstl_prev,state_prev);
 `endif
-	if (
-		( debug_expected_prev[0] !== 1'bx ) && ( debug_prev[0] !== debug_expected_prev[0] )
-		&& ((debug_expected_prev[0] !== last_debug_exp[0]) ||
-			on_first_change[1])
-	)
-	begin
-		$display ("ERROR! Vector Mismatch for output port debug[0] :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", debug_expected_prev);
-		$display ("     Real value = %b", debug_prev);
-		nummismatches = nummismatches + 1;
-		on_first_change[1] = 1'b0;
-		last_debug_exp[0] = debug_expected_prev[0];
-	end
-	if (
-		( debug_expected_prev[1] !== 1'bx ) && ( debug_prev[1] !== debug_expected_prev[1] )
-		&& ((debug_expected_prev[1] !== last_debug_exp[1]) ||
-			on_first_change[1])
-	)
-	begin
-		$display ("ERROR! Vector Mismatch for output port debug[1] :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", debug_expected_prev);
-		$display ("     Real value = %b", debug_prev);
-		nummismatches = nummismatches + 1;
-		on_first_change[1] = 1'b0;
-		last_debug_exp[1] = debug_expected_prev[1];
-	end
-	if (
-		( debug_expected_prev[2] !== 1'bx ) && ( debug_prev[2] !== debug_expected_prev[2] )
-		&& ((debug_expected_prev[2] !== last_debug_exp[2]) ||
-			on_first_change[1])
-	)
-	begin
-		$display ("ERROR! Vector Mismatch for output port debug[2] :: @time = %t",  $realtime);
-		$display ("     Expected value = %b", debug_expected_prev);
-		$display ("     Real value = %b", debug_prev);
-		nummismatches = nummismatches + 1;
-		on_first_change[1] = 1'b0;
-		last_debug_exp[2] = debug_expected_prev[2];
-	end
 	if (
 		( mstl_expected_prev[0] !== 1'bx ) && ( mstl_prev[0] !== mstl_expected_prev[0] )
 		&& ((mstl_expected_prev[0] !== last_mstl_exp[0]) ||
-			on_first_change[2])
+			on_first_change[1])
 	)
 	begin
 		$display ("ERROR! Vector Mismatch for output port mstl[0] :: @time = %t",  $realtime);
 		$display ("     Expected value = %b", mstl_expected_prev);
 		$display ("     Real value = %b", mstl_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[2] = 1'b0;
+		on_first_change[1] = 1'b0;
 		last_mstl_exp[0] = mstl_expected_prev[0];
 	end
 	if (
 		( mstl_expected_prev[1] !== 1'bx ) && ( mstl_prev[1] !== mstl_expected_prev[1] )
 		&& ((mstl_expected_prev[1] !== last_mstl_exp[1]) ||
-			on_first_change[2])
+			on_first_change[1])
 	)
 	begin
 		$display ("ERROR! Vector Mismatch for output port mstl[1] :: @time = %t",  $realtime);
 		$display ("     Expected value = %b", mstl_expected_prev);
 		$display ("     Real value = %b", mstl_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[2] = 1'b0;
+		on_first_change[1] = 1'b0;
 		last_mstl_exp[1] = mstl_expected_prev[1];
 	end
 	if (
 		( mstl_expected_prev[2] !== 1'bx ) && ( mstl_prev[2] !== mstl_expected_prev[2] )
 		&& ((mstl_expected_prev[2] !== last_mstl_exp[2]) ||
-			on_first_change[2])
+			on_first_change[1])
 	)
 	begin
 		$display ("ERROR! Vector Mismatch for output port mstl[2] :: @time = %t",  $realtime);
 		$display ("     Expected value = %b", mstl_expected_prev);
 		$display ("     Real value = %b", mstl_prev);
 		nummismatches = nummismatches + 1;
-		on_first_change[2] = 1'b0;
+		on_first_change[1] = 1'b0;
 		last_mstl_exp[2] = mstl_expected_prev[2];
+	end
+	if (
+		( resetCounter_expected_prev !== 1'bx ) && ( resetCounter_prev !== resetCounter_expected_prev )
+		&& ((resetCounter_expected_prev !== last_resetCounter_exp) ||
+			on_first_change[2])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port resetCounter :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", resetCounter_expected_prev);
+		$display ("     Real value = %b", resetCounter_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[2] = 1'b0;
+		last_resetCounter_exp = resetCounter_expected_prev;
 	end
 	if (
 		( sstl_expected_prev[0] !== 1'bx ) && ( sstl_prev[0] !== sstl_expected_prev[0] )
@@ -309,6 +294,45 @@ begin
 		on_first_change[3] = 1'b0;
 		last_sstl_exp[2] = sstl_expected_prev[2];
 	end
+	if (
+		( state_expected_prev[0] !== 1'bx ) && ( state_prev[0] !== state_expected_prev[0] )
+		&& ((state_expected_prev[0] !== last_state_exp[0]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port state[0] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", state_expected_prev);
+		$display ("     Real value = %b", state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_state_exp[0] = state_expected_prev[0];
+	end
+	if (
+		( state_expected_prev[1] !== 1'bx ) && ( state_prev[1] !== state_expected_prev[1] )
+		&& ((state_expected_prev[1] !== last_state_exp[1]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port state[1] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", state_expected_prev);
+		$display ("     Real value = %b", state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_state_exp[1] = state_expected_prev[1];
+	end
+	if (
+		( state_expected_prev[2] !== 1'bx ) && ( state_prev[2] !== state_expected_prev[2] )
+		&& ((state_expected_prev[2] !== last_state_exp[2]) ||
+			on_first_change[4])
+	)
+	begin
+		$display ("ERROR! Vector Mismatch for output port state[2] :: @time = %t",  $realtime);
+		$display ("     Expected value = %b", state_expected_prev);
+		$display ("     Real value = %b", state_prev);
+		nummismatches = nummismatches + 1;
+		on_first_change[4] = 1'b0;
+		last_state_exp[2] = state_expected_prev[2];
+	end
 
 	trigger <= ~trigger;
 end
@@ -328,29 +352,31 @@ endmodule
 module lab3_vlg_vec_tst();
 // constants                                           
 // general purpose registers
+reg changeState;
 reg clk;
-reg counterExpired;
 reg enable;
 reg reset;
 reg sensor;
 // wires                                               
-wire [2:0] debug;
 wire [2:0] mstl;
+wire resetCounter;
 wire [2:0] sstl;
+wire [2:0] state;
 
 wire sampler;                             
 
 // assign statements (if any)                          
 lab3 i1 (
 // port map - connection between master ports and signals/registers   
+	.changeState(changeState),
 	.clk(clk),
-	.counterExpired(counterExpired),
-	.debug(debug),
 	.enable(enable),
 	.mstl(mstl),
 	.reset(reset),
+	.resetCounter(resetCounter),
 	.sensor(sensor),
-	.sstl(sstl)
+	.sstl(sstl),
+	.state(state)
 );
 
 // clk
@@ -376,15 +402,14 @@ begin
 	enable = #28000 1'b0;
 end 
 
-// counterExpired
+// changeState
 initial
 begin
-	counterExpired = 1'b1;
-	counterExpired = #4000 1'b0;
-	counterExpired = #2000 1'b1;
-	counterExpired = #12000 1'b0;
-	counterExpired = #2000 1'b1;
-	counterExpired = #8000 1'b0;
+	changeState = 1'b0;
+	changeState = #4000 1'b1;
+	changeState = #4000 1'b0;
+	changeState = #4000 1'b1;
+	changeState = #12000 1'b0;
 end 
 
 // sensor
@@ -396,8 +421,8 @@ begin
 end 
 
 lab3_vlg_sample_tst tb_sample (
+	.changeState(changeState),
 	.clk(clk),
-	.counterExpired(counterExpired),
 	.enable(enable),
 	.reset(reset),
 	.sensor(sensor),
@@ -405,9 +430,10 @@ lab3_vlg_sample_tst tb_sample (
 );
 
 lab3_vlg_check_tst tb_out(
-	.debug(debug),
 	.mstl(mstl),
+	.resetCounter(resetCounter),
 	.sstl(sstl),
+	.state(state),
 	.sampler_rx(sampler)
 );
 endmodule
